@@ -27,15 +27,9 @@ def hello_departure(departure):
     for val01 in tours.values():
         for ke, va in val01.items():
             if va == dep:
-                # print(f"{ke =}")
-                # print(f"{val01['country'] =}")
 
                 prices.append(val01['price'])
-                # print(f"{prices = }")
-
                 nights.append(val01['nights'])
-                # print(f"{nights = }")
-
                 count += 1
 
     prices_max = max(prices)
@@ -79,42 +73,6 @@ def hello_tours(id):
             description=description,
             departures=departures)
 
-@app.route('/data/departures/<departure>/')
-def data_departures_departure(departure):
-    # d = {}
-    for z, x in data.tours.items():
-         if x['departure'] == departure:
-             print(f"{x['country']}")
-             print(f"{x['title']}")
-             print(f"{x['price']}")
-             print(f"{x['stars']}")
-
-    tours = data.tours
-    dep_res = data.departures
-    dep = departure
-    print(f"{dep_res=}")
-    print(f"{dep=}")
-    return render_template("data_departures_departure.html",tours=tours, 
-                            dep=dep, dep_res=dep_res)
-
-@app.route('/data/')
-def hello_data():
-    # >> > data.tours[1]['title']
-    # 'Marina Lake Hotel & Spa'
-    # >> > data.tours[1]['price']
-    # 62000
-    # >> > data.tours[1]['stars']
-    # '4'
-    # >> > data.tours[1]['country']
-    # 'Куба'
-    #
-
-    tours = data.tours
-    return render_template("data.html",tours=tours, departures = data.departures)
-
-
-
-# @app.route("/data/")
 
 if __name__ == '__main__':
     app.run(debug=True)
